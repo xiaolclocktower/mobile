@@ -1,19 +1,25 @@
 <template>
 <div id="home">
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
-    <h1>首页</h1>
+    <!-- 请求来的数据中，图片和链接在banner.list中 -->
+    <home-swiper :banners = "banners.list"></home-swiper>
 </div>  
 </template>
 
 <script>
 /* 引用导航栏组件 */
 import NavBar from 'components/common/navbar/NavBar.vue'
+/* 导入轮播图插件 */
+import HomeSwiper from './childComps/HomeSwiper'
 /* 引用主页网络请求文件 */
 import {getHomeMultidata} from 'network/home'
 export default {
     name:"Home",
     components:{
-        NavBar
+        /* 注册导航栏组件 */
+        NavBar,
+        /* 注册轮播图组件 */
+        HomeSwiper
     },
     data(){
         /* 把请求来的数据暂存到data里，否则生命周期函数created结束后请求的数据就消失了 */
